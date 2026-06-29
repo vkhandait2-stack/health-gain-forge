@@ -15,7 +15,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
-import { Stagger, itemVariants } from "./Reveal";
+import { Stagger } from "./Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 
 const SERVICES = [
