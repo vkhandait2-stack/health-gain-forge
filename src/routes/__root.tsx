@@ -77,19 +77,42 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Nex Records — Healthcare Revenue Cycle Management" },
+      {
+        name: "description",
+        content:
+          "Nex Records is an enterprise Healthcare Revenue Cycle Management company helping U.S. providers increase revenue, reduce denials and get paid faster.",
+      },
+      { name: "author", content: "Nex Records" },
+      { name: "theme-color", content: "#1d3a8a" },
+      { property: "og:site_name", content: "Nex Records" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Nex Records",
+          description:
+            "Enterprise Healthcare Revenue Cycle Management company helping U.S. healthcare providers increase revenue, reduce denials and accelerate collections.",
+          areaServed: "US",
+          url: "/",
+        }),
       },
     ],
   }),
