@@ -269,6 +269,19 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes mesh-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(2%, -3%, 0) scale(1.05); }
+  66% { transform: translate3d(-2%, 2%, 0) scale(0.97); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes border-spin {
+  to { transform: rotate(360deg); }
+}
 
 @utility animate-float-slow {
   animation: float-slow 6s ease-in-out infinite;
@@ -278,6 +291,24 @@
 }
 @utility animate-marquee {
   animation: marquee 32s linear infinite;
+}
+@utility animate-mesh-drift {
+  animation: mesh-drift 18s ease-in-out infinite;
+}
+
+/* Lenis smooth-scroll integration: let JS drive scrolling, disable native CSS smooth */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
