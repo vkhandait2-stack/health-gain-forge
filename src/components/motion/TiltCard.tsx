@@ -1,5 +1,12 @@
 import { useRef, type ReactNode, type ElementType } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useReducedMotion,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
 import { itemVariants } from "@/components/site/Reveal";
 
 /**
@@ -72,7 +79,6 @@ export function TiltCard({
   );
 }
 
-import { useTransform, type MotionValue } from "motion/react";
 function useReflection(gx: MotionValue<number>, gy: MotionValue<number>) {
   return useTransform([gx, gy], ([x, y]) =>
     `radial-gradient(420px circle at ${x}% ${y}%, oklch(0.7 0.16 250 / 0.12), transparent 55%)`,
