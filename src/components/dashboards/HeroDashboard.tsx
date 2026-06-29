@@ -48,6 +48,7 @@ export function HeroDashboard() {
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="glass rounded-[1.6rem] p-4 shadow-float sm:p-5"
+        whileHover={{ y: -6 }}
       >
         {/* top bar */}
         <div className="flex items-center justify-between border-b border-border/60 pb-3">
