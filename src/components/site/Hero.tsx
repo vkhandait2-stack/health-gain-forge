@@ -3,6 +3,7 @@ import { ArrowRight, ShieldCheck, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroBackground } from "./HeroBackground";
 import { HeroDashboard } from "@/components/dashboards/HeroDashboard";
+import { Magnetic } from "@/components/motion/Magnetic";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -62,14 +63,18 @@ export function Hero() {
             animate="show"
             className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
-            <Button asChild variant="hero" size="lg">
-              <a href="#contact">
-                Schedule Free Consultation <ArrowRight className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href="#services">Explore Services</a>
-            </Button>
+            <Magnetic>
+              <Button asChild variant="hero" size="lg">
+                <a href="#contact">
+                  Schedule Free Consultation <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+            </Magnetic>
+            <Magnetic>
+              <Button asChild variant="outline" size="lg">
+                <a href="#services">Explore Services</a>
+              </Button>
+            </Magnetic>
           </motion.div>
 
           <motion.div

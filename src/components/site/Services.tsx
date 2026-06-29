@@ -15,7 +15,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
-import { Stagger, itemVariants } from "./Reveal";
+import { Stagger } from "./Reveal";
+import { TiltCard } from "@/components/motion/TiltCard";
 
 const SERVICES = [
   { icon: FileText, title: "Medical Billing", desc: "End-to-end billing from patient registration to final reimbursement." },
@@ -58,13 +59,12 @@ export function Services() {
 
         <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => (
-            <motion.article
+            <TiltCard
               key={s.title}
-              variants={itemVariants}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card/80 p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/30 hover:shadow-glow"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card/80 p-6 shadow-soft transition-all duration-300 hover:border-brand/30 hover:shadow-glow"
             >
               <div className="absolute inset-x-0 -top-px h-px bg-gradient-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-soft text-brand transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+              <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-soft text-brand transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[5deg]">
                 <s.icon className="h-6 w-6" />
               </span>
               <h3 className="mt-5 text-lg font-semibold text-navy">{s.title}</h3>
@@ -75,7 +75,7 @@ export function Services() {
               >
                 Learn More <ArrowRight className="h-4 w-4" />
               </a>
-            </motion.article>
+            </TiltCard>
           ))}
         </Stagger>
 

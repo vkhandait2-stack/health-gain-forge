@@ -17,6 +17,14 @@ export function HeroBackground() {
           animation: "float-slow 11s ease-in-out infinite",
         }}
       />
+      {/* slow-drifting mesh light */}
+      <div
+        className="animate-mesh-drift absolute left-1/3 top-0 h-[30rem] w-[30rem] rounded-full opacity-30 blur-3xl will-change-transform"
+        style={{
+          background:
+            "radial-gradient(circle, oklch(0.68 0.17 268 / 0.28), transparent 68%)",
+        }}
+      />
       {/* network lines */}
       <svg className="absolute inset-0 h-full w-full opacity-[0.08]" aria-hidden="true">
         <defs>

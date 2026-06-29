@@ -21,6 +21,8 @@ import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { CtaBand } from "@/components/site/CtaBand";
 import { StickyCta } from "@/components/site/StickyCta";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { CursorGlow } from "@/components/motion/CursorGlow";
 
 const TITLE = "Healthcare Revenue Cycle Management Services for Medical Practices in the USA | Nex Records";
 const DESCRIPTION =
@@ -84,6 +86,8 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background">
+      <SmoothScroll />
+      <CursorGlow />
       <Header />
       <main>
         <Hero />
