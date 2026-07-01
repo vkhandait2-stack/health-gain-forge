@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Nex Records — Healthcare Revenue Cycle Management" },
+      { title: "Lovable App" },
       {
         name: "description",
         content:
@@ -88,6 +88,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Nex Records" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Lovable App" },
+      { name: "twitter:title", content: "Lovable App" },
+      { name: "description", content: "Nex Records offers enterprise-grade RCM solutions to US healthcare providers, optimizing revenue and streamlining operations." },
+      { property: "og:description", content: "Nex Records offers enterprise-grade RCM solutions to US healthcare providers, optimizing revenue and streamlining operations." },
+      { name: "twitter:description", content: "Nex Records offers enterprise-grade RCM solutions to US healthcare providers, optimizing revenue and streamlining operations." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/56870b08-3e3a-4b92-901a-4bbe12f5b96c/id-preview-8e26dd03--19e7a37c-48f7-4a6a-9fd0-fa26072510ba.lovable.app-1782888852668.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/56870b08-3e3a-4b92-901a-4bbe12f5b96c/id-preview-8e26dd03--19e7a37c-48f7-4a6a-9fd0-fa26072510ba.lovable.app-1782888852668.png" },
     ],
     links: [
       {
