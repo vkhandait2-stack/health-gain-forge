@@ -4,6 +4,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
+import { CALENDLY_URL, externalLink } from "@/lib/site";
 
 function LiveNumber({
   value,
@@ -146,7 +147,7 @@ export function RoiCalculator() {
               </div>
             </div>
             <Button asChild variant="hero" size="lg" className="mt-6 w-full">
-              <a href="#contact">Book Free Revenue Assessment <ArrowRight className="h-4 w-4" /></a>
+              <a href={CALENDLY_URL} {...externalLink}>Book Free Consultation <ArrowRight className="h-4 w-4" /></a>
             </Button>
           </div>
         </Reveal>

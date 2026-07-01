@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { CALENDLY_URL, externalLink } from "@/lib/site";
 
 export function StickyCta() {
   const [show, setShow] = useState(false);
@@ -19,7 +20,7 @@ export function StickyCta() {
           className="fixed inset-x-3 bottom-3 z-40 lg:hidden"
         >
           <Button asChild variant="hero" className="w-full shadow-float">
-            <a href="#contact">Book Free Consultation</a>
+            <a href={CALENDLY_URL} {...externalLink}>Book Free Consultation</a>
           </Button>
         </motion.div>
       )}

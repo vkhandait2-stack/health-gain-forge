@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { HeroBackground } from "./HeroBackground";
 import { HeroDashboard } from "@/components/dashboards/HeroDashboard";
 import { Magnetic } from "@/components/motion/Magnetic";
+import { CALENDLY_URL, externalLink } from "@/lib/site";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -65,8 +66,8 @@ export function Hero() {
           >
             <Magnetic>
               <Button asChild variant="hero" size="lg">
-                <a href="#contact">
-                  Schedule Free Consultation <ArrowRight className="h-4 w-4" />
+                <a href={CALENDLY_URL} {...externalLink}>
+                  Book Free Consultation <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
             </Magnetic>

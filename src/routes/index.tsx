@@ -53,8 +53,16 @@ export const Route = createFileRoute("/")({
           areaServed: { "@type": "Country", name: "United States" },
           serviceType: "Healthcare Revenue Cycle Management",
           url: "/",
-          telephone: "+1-800-555-0199",
-          email: "sales@nexrecords.com",
+          email: "sales@Nex-Records.com",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "8 The Green, STE D",
+            addressLocality: "Dover",
+            addressRegion: "DE",
+            postalCode: "19901",
+            addressCountry: "US",
+          },
+          sameAs: ["https://www.linkedin.com/company/nexrecords/"],
         }),
       },
       {
