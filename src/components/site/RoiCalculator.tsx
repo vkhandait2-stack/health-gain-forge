@@ -4,6 +4,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
+import { CALENDLY_URL, externalLink } from "@/lib/site";
 
 function LiveNumber({
   value,
