@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Phone, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Brand } from "./Brand";
 import { Button } from "@/components/ui/button";
+import { CALENDLY_URL, externalLink } from "@/lib/site";
 
 const NAV = [
   { label: "Services", href: "#services" },
@@ -23,7 +24,8 @@ export function AnnouncementBar() {
           Helping Healthcare Providers Increase Revenue, Reduce Denials &amp; Get Paid Faster.
         </p>
         <a
-          href="#contact"
+          href={CALENDLY_URL}
+          {...externalLink}
           className="hidden shrink-0 items-center gap-1 font-semibold text-brand-glow transition-colors hover:text-white sm:inline-flex"
         >
           Book Free Consultation <ArrowRight className="h-3.5 w-3.5" />
@@ -76,7 +78,7 @@ export function Header() {
               <a href="#portal">Client Portal</a>
             </Button>
             <Button asChild variant="hero" size="sm">
-              <a href="#contact">Book Free Consultation</a>
+              <a href={CALENDLY_URL} {...externalLink}>Book Free Consultation</a>
             </Button>
           </div>
           <button
@@ -113,16 +115,10 @@ export function Header() {
               ))}
             </ul>
             <Button asChild variant="hero" className="mt-3 w-full">
-              <a href="#contact" onClick={() => setOpen(false)}>
+              <a href={CALENDLY_URL} {...externalLink} onClick={() => setOpen(false)}>
                 Book Free Consultation
               </a>
             </Button>
-            <a
-              href="tel:+18005550199"
-              className="mt-3 flex items-center justify-center gap-2 text-sm font-medium text-muted-foreground"
-            >
-              <Phone className="h-4 w-4" /> (800) 555-0199
-            </a>
           </motion.div>
         )}
       </AnimatePresence>
