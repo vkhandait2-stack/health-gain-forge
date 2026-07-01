@@ -1,4 +1,5 @@
 // Central Nex Records contact + conversion configuration.
+export const SITE_URL = "https://health-gain-forge.lovable.app";
 export const CALENDLY_URL = "https://calendly.com/vaishk1212/new-meeting";
 export const LINKEDIN_URL = "https://www.linkedin.com/company/nexrecords/";
 
