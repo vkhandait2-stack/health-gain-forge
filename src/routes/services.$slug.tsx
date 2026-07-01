@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { Stagger, itemVariants, Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import { getService, SERVICE_SLUGS } from "@/lib/services";
+import { getService, SERVICE_SLUGS, type ServiceContent } from "@/lib/services";
 import { getIcon } from "@/components/site/iconMap";
 import { SITE_URL, CALENDLY_URL, externalLink } from "@/lib/site";
 
@@ -70,7 +70,7 @@ export const Route = createFileRoute("/services/$slug")({
 });
 
 function ServiceDetail() {
-  const s = Route.useLoaderData();
+  const s = Route.useLoaderData() as ServiceContent;
   const Icon = getIcon(s.icon);
   return (
     <InnerLayout>
