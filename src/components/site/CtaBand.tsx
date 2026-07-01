@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
+import { CALENDLY_URL, externalLink } from "@/lib/site";
 
 interface CtaBandProps {
   title: string;
@@ -30,12 +31,12 @@ export function CtaBand({ title, subtitle, primary, secondary }: CtaBandProps) {
           )}
           <div className="relative mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild variant="hero" size="lg">
-              <a href="#contact">
+              <a href={CALENDLY_URL} {...externalLink}>
                 {primary} <ArrowRight className="h-4 w-4" />
               </a>
             </Button>
             <Button asChild variant="glass" size="lg">
-              <a href="#contact">{secondary}</a>
+              <a href={CALENDLY_URL} {...externalLink}>{secondary}</a>
             </Button>
           </div>
         </Reveal>
