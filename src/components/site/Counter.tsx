@@ -24,6 +24,11 @@ export function Counter({
 
   useEffect(() => {
     if (!inView) return;
+    const reduce = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setDisplay(value);
+      return;
+    }
     let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {
@@ -35,6 +40,12 @@ export function Counter({
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [inView, value, duration]);
+
+  // Safety net: never leave a counter stuck at 0 if the observer never fires.
+  useEffect(() => {
+    const t = setTimeout(() => setDisplay((d) => (d === 0 ? value : d)), 1600);
+    return () => clearTimeout(t);
+  }, [value]);
 
   const formatted = display.toLocaleString("en-US", {
     minimumFractionDigits: decimals,
