@@ -1,6 +1,6 @@
 import { Linkedin, Mail, MapPin } from "lucide-react";
 import { Brand } from "./Brand";
-import { CALENDLY_URL, LINKEDIN_URL, EMAIL_PRIMARY, EMAIL_SECONDARY, ADDRESS, externalLink } from "@/lib/site";
+import { CALENDLY_URL, LINKEDIN_URL, CONTACT_EMAIL, ADDRESS, externalLink } from "@/lib/site";
 
 const COLUMNS = [
   { title: "Company", links: ["About", "Case Studies", "Blog", "Contact"] },
@@ -33,11 +33,8 @@ export function Footer() {
             </div>
 
             <div className="mt-5 flex flex-col gap-2 text-sm">
-              <a href={`mailto:${EMAIL_PRIMARY}`} className="inline-flex items-center gap-2 text-navy-foreground/70 transition-colors hover:text-brand-glow">
-                <Mail className="h-4 w-4" /> {EMAIL_PRIMARY}
-              </a>
-              <a href={`mailto:${EMAIL_SECONDARY}`} className="inline-flex items-center gap-2 text-navy-foreground/70 transition-colors hover:text-brand-glow">
-                <Mail className="h-4 w-4" /> {EMAIL_SECONDARY}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-2 text-navy-foreground/70 transition-colors hover:text-brand-glow">
+                <Mail className="h-4 w-4" /> {CONTACT_EMAIL}
               </a>
               <a href={LINKEDIN_URL} {...externalLink} className="inline-flex items-center gap-2 text-navy-foreground/70 transition-colors hover:text-brand-glow">
                 <Linkedin className="h-4 w-4" /> LinkedIn

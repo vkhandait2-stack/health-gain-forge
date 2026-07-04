@@ -2,7 +2,7 @@ import { Mail, Clock, Linkedin, ShieldCheck, MapPin, ArrowRight, CalendarCheck, 
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
-import { CALENDLY_URL, LINKEDIN_URL, EMAIL_PRIMARY, EMAIL_SECONDARY, ADDRESS, externalLink } from "@/lib/site";
+import { CALENDLY_URL, LINKEDIN_URL, CONTACT_EMAIL, ADDRESS, externalLink } from "@/lib/site";
 
 const REASONS = [
   { icon: FileText, text: "Need pricing?" },
@@ -45,19 +45,12 @@ export function Contact() {
               </div>
             </div>
 
-            {/* Email cards */}
-            <div className="grid gap-4 sm:grid-cols-2">
-              <a href={`mailto:${EMAIL_PRIMARY}`} className="group rounded-2xl border border-border bg-card p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-glow">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-soft text-brand"><Mail className="h-5 w-5" /></span>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Sales</p>
-                <p className="mt-1 break-all text-sm font-semibold text-navy group-hover:text-brand">{EMAIL_PRIMARY}</p>
-              </a>
-              <a href={`mailto:${EMAIL_SECONDARY}`} className="group rounded-2xl border border-border bg-card p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-glow">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-soft text-brand"><Mail className="h-5 w-5" /></span>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Direct</p>
-                <p className="mt-1 break-all text-sm font-semibold text-navy group-hover:text-brand">{EMAIL_SECONDARY}</p>
-              </a>
-            </div>
+            {/* Email card */}
+            <a href={`mailto:${CONTACT_EMAIL}`} className="group rounded-2xl border border-border bg-card p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-glow">
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-soft text-brand"><Mail className="h-5 w-5" /></span>
+              <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Email us</p>
+              <p className="mt-1 break-all text-sm font-semibold text-navy group-hover:text-brand">{CONTACT_EMAIL}</p>
+            </a>
           </Reveal>
 
           {/* Right: address + hours */}
