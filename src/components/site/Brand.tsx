@@ -1,6 +1,14 @@
 import { Link } from "@tanstack/react-router";
+import logo from "@/assets/nex-records-logo.png.asset.json";
 
 export function Brand({ dark = false }: { dark?: boolean }) {
+  if (!dark) {
+    return (
+      <Link to="/" className="inline-flex items-center" aria-label="Nex Records home">
+        <img src={logo.url} alt="Nex Records — Healthcare Revenue Cycle Management" className="h-9 w-auto sm:h-10" width={304} height={72} />
+      </Link>
+    );
+  }
   return (
     <Link to="/" className="group inline-flex items-center gap-2.5" aria-label="Nex Records home">
       <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-brand shadow-glow">
@@ -15,7 +23,7 @@ export function Brand({ dark = false }: { dark?: boolean }) {
         </svg>
       </span>
       <span
-        className={`text-lg font-bold tracking-tight ${dark ? "text-navy-foreground" : "text-navy"}`}
+        className="text-lg font-bold tracking-tight text-navy-foreground"
         style={{ fontFamily: "var(--font-display)" }}
       >
         Nex<span className="text-brand">Records</span>
