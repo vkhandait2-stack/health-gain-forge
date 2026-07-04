@@ -1,10 +1,12 @@
 // Central Nex Records contact + conversion configuration.
-export const SITE_URL = "https://health-gain-forge.lovable.app";
+export const SITE_URL = "https://nex-records.com";
 export const CALENDLY_URL = "https://calendly.com/vaishk1212/new-meeting";
 export const LINKEDIN_URL = "https://www.linkedin.com/company/nexrecords/";
 
-export const EMAIL_PRIMARY = "sales@Nex-Records.com";
+// The single contact email used everywhere on the site.
+export const EMAIL_PRIMARY = "Vaishnav@Nex-Records.com";
 export const EMAIL_SECONDARY = "Vaishnav@Nex-Records.com";
+export const CONTACT_EMAIL = "Vaishnav@Nex-Records.com";
 
 export const ADDRESS = {
   company: "Nex Records",
