@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Brand } from "./Brand";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,6 @@ const NAV = [
   { label: "Resources", href: "#resources" },
   { label: "Case Studies", href: "#case-studies" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export function AnnouncementBar() {
@@ -72,6 +72,14 @@ export function Header() {
                 </a>
               </li>
             ))}
+            <li>
+              <Link
+                to="/contact"
+                className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-navy"
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
           <div className="hidden items-center gap-2 lg:flex">
             <Button asChild variant="ghost" size="sm">
@@ -113,6 +121,15 @@ export function Header() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/contact"
+                  onClick={() => setOpen(false)}
+                  className="block rounded-xl px-4 py-3 text-sm font-medium text-navy transition-colors hover:bg-accent"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
             <Button asChild variant="hero" className="mt-3 w-full">
               <a href={CALENDLY_URL} {...externalLink} onClick={() => setOpen(false)}>
