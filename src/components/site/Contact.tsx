@@ -27,7 +27,7 @@ export function Contact() {
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.15fr_1fr]">
           {/* Left: reasons + book */}
           <Reveal className="flex flex-col gap-5">
-            <LeadForm compact id="lead-form" />
+            <LeadForm id="lead-form" />
             <div className="rounded-[1.6rem] border border-border bg-card p-7 shadow-card">
               <p className="text-sm font-semibold uppercase tracking-wide text-brand">Contact our Revenue Cycle Specialists</p>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
