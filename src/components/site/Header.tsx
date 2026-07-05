@@ -7,13 +7,12 @@ import { Button } from "@/components/ui/button";
 import { CALENDLY_URL, externalLink } from "@/lib/site";
 
 const NAV = [
-  { label: "Services", href: "#services" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Industries", href: "#industries" },
-  { label: "Resources", href: "#resources" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "About", href: "#about" },
-];
+  { label: "Services", to: "/services" },
+  { label: "Industries", to: "/industries" },
+  { label: "Case Studies", to: "/case-studies" },
+  { label: "Blog", to: "/blog" },
+  { label: "About", to: "/about" },
+] as const;
 
 export function AnnouncementBar() {
   return (
@@ -64,12 +63,12 @@ export function Header() {
           <ul className="hidden items-center gap-1 lg:flex">
             {NAV.map((item) => (
               <li key={item.label}>
-                <a
-                  href={item.href}
+                <Link
+                  to={item.to}
                   className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-navy"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
@@ -83,7 +82,7 @@ export function Header() {
           </ul>
           <div className="hidden items-center gap-2 lg:flex">
             <Button asChild variant="ghost" size="sm">
-              <a href="#portal">Client Portal</a>
+              <Link to="/client-portal">Client Portal</Link>
             </Button>
             <Button asChild variant="hero" size="sm">
               <a href={CALENDLY_URL} {...externalLink}>Book Free Consultation</a>
