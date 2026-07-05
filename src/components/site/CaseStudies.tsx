@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Stagger, itemVariants } from "./Reveal";
@@ -96,9 +97,9 @@ export function CaseStudies() {
                   </div>
                 ))}
               </div>
-              <a href="#contact" className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand transition-all group-hover:gap-2">
+              <Link to="/case-studies" className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand transition-all group-hover:gap-2">
                 Read Full Story <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </motion.article>
           ))}
         </Stagger>
