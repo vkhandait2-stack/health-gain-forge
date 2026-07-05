@@ -109,15 +109,15 @@ export function Header() {
             className="glass mx-3 mt-2 rounded-2xl p-4 shadow-card lg:hidden"
           >
             <ul className="grid gap-1">
-              {[...NAV, { label: "Client Portal", href: "#portal" }].map((item) => (
+              {[...NAV, { label: "Client Portal", to: "/client-portal" } as const].map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.to}
                     onClick={() => setOpen(false)}
                     className="block rounded-xl px-4 py-3 text-sm font-medium text-navy transition-colors hover:bg-accent"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
