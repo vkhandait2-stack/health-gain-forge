@@ -1,7 +1,7 @@
 import { Linkedin, Mail, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Brand } from "./Brand";
-import { CALENDLY_URL, LINKEDIN_URL, CONTACT_EMAIL, ADDRESS, externalLink } from "@/lib/site";
+import { LINKEDIN_URL, CONTACT_EMAIL, ADDRESS, externalLink } from "@/lib/site";
 
 interface FooterLink {
   label: string;
