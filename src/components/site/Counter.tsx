@@ -20,7 +20,9 @@ export function Counter({
 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [display, setDisplay] = useState(0);
+  // Start at the final value so the number is correct on the server and on the
+  // very first client paint — a literal 0 must never be shown.
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     if (!inView) return;
@@ -31,21 +33,17 @@ export function Counter({
     }
     let raf = 0;
     const start = performance.now();
+    setDisplay(0);
     const tick = (now: number) => {
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3);
       setDisplay(value * eased);
       if (p < 1) raf = requestAnimationFrame(tick);
+      else setDisplay(value);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [inView, value, duration]);
-
-  // Safety net: never leave a counter stuck at 0 if the observer never fires.
-  useEffect(() => {
-    const t = setTimeout(() => setDisplay((d) => (d === 0 ? value : d)), 1600);
-    return () => clearTimeout(t);
-  }, [value]);
 
   const formatted = display.toLocaleString("en-US", {
     minimumFractionDigits: decimals,
