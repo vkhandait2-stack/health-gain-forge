@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import {
   FileText,
   Code2,
@@ -19,18 +20,18 @@ import { Stagger } from "./Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 
 const SERVICES = [
-  { icon: FileText, title: "Medical Billing", desc: "End-to-end billing from patient registration to final reimbursement." },
-  { icon: Code2, title: "Medical Coding", desc: "Accurate ICD-10, CPT and HCPCS coding by experienced certified professionals." },
-  { icon: ShieldCheck, title: "Eligibility Verification", desc: "Verify insurance benefits before appointments to reduce claim rejections." },
-  { icon: KeyRound, title: "Prior Authorization", desc: "Fast prior authorization management to prevent treatment delays." },
-  { icon: ClipboardCheck, title: "Charge Entry", desc: "Accurate charge capture with faster, cleaner claim preparation." },
-  { icon: Send, title: "Claims Submission", desc: "Electronic claim submission with continuous claim tracking." },
-  { icon: Wallet, title: "Payment Posting", desc: "Quick payment posting with complete, audit-ready reconciliation." },
-  { icon: Undo2, title: "Denial Management", desc: "Root cause analysis, appeal processing and denial prevention strategies." },
-  { icon: PhoneCall, title: "A/R Follow-up", desc: "Persistent insurance and patient follow-up to improve collections." },
-  { icon: BadgeCheck, title: "Credentialing & Enrollment", desc: "Provider credentialing with Medicare, Medicaid and commercial payers." },
-  { icon: Bot, title: "Virtual Medical Assistant", desc: "AI-assisted front office support for scheduling and patient communication." },
-  { icon: BarChart3, title: "Revenue Analytics", desc: "Real-time dashboards showing collections, KPIs and financial performance." },
+  { icon: FileText, title: "Medical Billing", slug: "medical-billing", desc: "End-to-end billing from patient registration to final reimbursement." },
+  { icon: Code2, title: "Medical Coding", slug: "medical-coding", desc: "Accurate ICD-10, CPT and HCPCS coding by experienced certified professionals." },
+  { icon: ShieldCheck, title: "Eligibility Verification", slug: "eligibility-verification", desc: "Verify insurance benefits before appointments to reduce claim rejections." },
+  { icon: KeyRound, title: "Prior Authorization", slug: "prior-authorization", desc: "Fast prior authorization management to prevent treatment delays." },
+  { icon: ClipboardCheck, title: "Charge Entry", slug: "charge-entry", desc: "Accurate charge capture with faster, cleaner claim preparation." },
+  { icon: Send, title: "Claims Submission", slug: "medical-billing", desc: "Electronic claim submission with continuous claim tracking." },
+  { icon: Wallet, title: "Payment Posting", slug: "payment-posting", desc: "Quick payment posting with complete, audit-ready reconciliation." },
+  { icon: Undo2, title: "Denial Management", slug: "denial-management", desc: "Root cause analysis, appeal processing and denial prevention strategies." },
+  { icon: PhoneCall, title: "A/R Follow-up", slug: "ar-follow-up", desc: "Persistent insurance and patient follow-up to improve collections." },
+  { icon: BadgeCheck, title: "Credentialing & Enrollment", slug: "credentialing", desc: "Provider credentialing with Medicare, Medicaid and commercial payers." },
+  { icon: Bot, title: "Virtual Medical Assistant", slug: "revenue-analytics", desc: "AI-assisted front office support for scheduling and patient communication." },
+  { icon: BarChart3, title: "Revenue Analytics", slug: "revenue-analytics", desc: "Real-time dashboards showing collections, KPIs and financial performance." },
 ];
 
 const WORKFLOW = [
@@ -69,12 +70,13 @@ export function Services() {
               </span>
               <h3 className="mt-5 text-lg font-semibold text-navy">{s.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-              <a
-                href="#contact"
+              <Link
+                to="/services/$slug"
+                params={{ slug: s.slug }}
                 className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand transition-all group-hover:gap-2"
               >
                 Learn More <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </TiltCard>
           ))}
         </Stagger>
