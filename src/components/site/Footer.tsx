@@ -1,12 +1,51 @@
 import { Linkedin, Mail, MapPin } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Brand } from "./Brand";
 import { CALENDLY_URL, LINKEDIN_URL, CONTACT_EMAIL, ADDRESS, externalLink } from "@/lib/site";
 
-const COLUMNS = [
-  { title: "Company", links: ["About", "Case Studies", "Blog", "Contact"] },
-  { title: "Services", links: ["Medical Billing", "Medical Coding", "Denial Management", "Revenue Analytics"] },
-  { title: "Industries", links: ["Primary Care", "Behavioral Health", "Orthopedics", "Physical Therapy"] },
-  { title: "Resources", links: ["Privacy Policy", "Terms", "HIPAA Compliance", "Client Portal"] },
+interface FooterLink {
+  label: string;
+  to: string;
+  params?: Record<string, string>;
+}
+
+const COLUMNS: { title: string; links: FooterLink[] }[] = [
+  {
+    title: "Company",
+    links: [
+      { label: "About", to: "/about" },
+      { label: "Case Studies", to: "/case-studies" },
+      { label: "Blog", to: "/blog" },
+      { label: "Contact", to: "/contact" },
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      { label: "Medical Billing", to: "/services/$slug", params: { slug: "medical-billing" } },
+      { label: "Medical Coding", to: "/services/$slug", params: { slug: "medical-coding" } },
+      { label: "Denial Management", to: "/services/$slug", params: { slug: "denial-management" } },
+      { label: "Revenue Analytics", to: "/services/$slug", params: { slug: "revenue-analytics" } },
+    ],
+  },
+  {
+    title: "Industries",
+    links: [
+      { label: "Primary Care", to: "/industries/$slug", params: { slug: "primary-care" } },
+      { label: "Behavioral Health", to: "/industries/$slug", params: { slug: "behavioral-health" } },
+      { label: "Orthopedics", to: "/industries/$slug", params: { slug: "orthopedics" } },
+      { label: "Physical Therapy", to: "/industries/$slug", params: { slug: "physical-therapy" } },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Privacy Policy", to: "/privacy" },
+      { label: "Terms", to: "/terms" },
+      { label: "HIPAA Compliance", to: "/hipaa" },
+      { label: "Client Portal", to: "/client-portal" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -47,14 +86,14 @@ export function Footer() {
               <p className="text-sm font-semibold text-navy-foreground">{col.title}</p>
               <ul className="mt-4 space-y-2.5">
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <a
-                      href={l === "Contact" ? "#contact" : CALENDLY_URL}
-                      {...(l === "Contact" ? {} : externalLink)}
+                  <li key={l.label}>
+                    <Link
+                      to={l.to}
+                      params={l.params}
                       className="text-sm text-navy-foreground/60 transition-colors hover:text-brand-glow"
                     >
-                      {l}
-                    </a>
+                      {l.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
