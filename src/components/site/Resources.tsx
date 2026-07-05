@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Stagger, itemVariants } from "./Reveal";
@@ -40,9 +41,9 @@ export function Resources() {
               <div className="flex flex-1 flex-col p-6">
                 <p className="text-xs text-muted-foreground">{a.read}</p>
                 <h3 className="mt-2 flex-1 text-lg font-semibold text-navy">{a.title}</h3>
-                <a href="#contact" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand transition-all group-hover:gap-2">
+                <Link to="/blog" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand transition-all group-hover:gap-2">
                   Read More <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
               </div>
             </motion.article>
           ))}

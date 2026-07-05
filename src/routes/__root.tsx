@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
+      { title: "Nex Records — Healthcare Revenue Cycle Management" },
       {
         name: "description",
         content:
@@ -87,9 +87,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#1d3a8a" },
       { property: "og:site_name", content: "Nex Records" },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://nex-records.com/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Lovable App" },
-      { name: "twitter:title", content: "Lovable App" },
+      { property: "og:title", content: "Nex Records — Healthcare Revenue Cycle Management" },
+      { name: "twitter:title", content: "Nex Records — Healthcare Revenue Cycle Management" },
       { name: "description", content: "Nex Records offers enterprise-grade RCM solutions to US healthcare providers, optimizing revenue and streamlining operations." },
       { property: "og:description", content: "Nex Records offers enterprise-grade RCM solutions to US healthcare providers, optimizing revenue and streamlining operations." },
       { name: "twitter:description", content: "Nex Records offers enterprise-grade RCM solutions to US healthcare providers, optimizing revenue and streamlining operations." },
@@ -118,7 +119,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           description:
             "Enterprise Healthcare Revenue Cycle Management company helping U.S. healthcare providers increase revenue, reduce denials and accelerate collections.",
           areaServed: "US",
-          url: "/",
+          url: "https://nex-records.com/",
         }),
       },
     ],

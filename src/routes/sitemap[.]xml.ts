@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { SERVICE_SLUGS } from "@/lib/services";
+import { INDUSTRY_SLUGS } from "@/lib/industries";
+import { BLOG_SLUGS } from "@/lib/blog";
 
 const BASE_URL = "https://nex-records.com";
 
@@ -16,12 +18,31 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
+          { path: "/about", changefreq: "monthly", priority: "0.7" },
           { path: "/services", changefreq: "weekly", priority: "0.9" },
           ...SERVICE_SLUGS.map((slug) => ({
             path: `/services/${slug}`,
             changefreq: "monthly" as const,
             priority: "0.8",
           })),
+          { path: "/industries", changefreq: "weekly", priority: "0.9" },
+          ...INDUSTRY_SLUGS.map((slug) => ({
+            path: `/industries/${slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.7",
+          })),
+          { path: "/case-studies", changefreq: "monthly", priority: "0.7" },
+          { path: "/blog", changefreq: "weekly", priority: "0.7" },
+          ...BLOG_SLUGS.map((slug) => ({
+            path: `/blog/${slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.6",
+          })),
+          { path: "/contact", changefreq: "monthly", priority: "0.8" },
+          { path: "/client-portal", changefreq: "monthly", priority: "0.5" },
+          { path: "/privacy", changefreq: "monthly", priority: "0.3" },
+          { path: "/terms", changefreq: "monthly", priority: "0.3" },
+          { path: "/hipaa", changefreq: "monthly", priority: "0.3" },
         ];
         const urls = entries.map((e) =>
           [

@@ -1,40 +1,37 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { X, ArrowRight } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Stagger, itemVariants } from "./Reveal";
 
 interface Specialty {
   name: string;
   desc: string;
+  slug?: string;
 }
 
 const SPECIALTIES: Specialty[] = [
-  { name: "Primary Care", desc: "Streamlined billing and eligibility workflows for high-volume primary care visits." },
-  { name: "Family Medicine", desc: "Accurate coding for preventive, chronic and acute care across all ages." },
-  { name: "Internal Medicine", desc: "Complex E/M coding and documentation support to capture full reimbursement." },
-  { name: "Urgent Care", desc: "Fast claims for walk-in volume with real-time eligibility verification." },
-  { name: "Behavioral Health", desc: "Specialized billing for therapy, counseling and time-based session codes." },
-  { name: "Mental Health", desc: "Authorization-heavy workflows handled end to end to prevent denials." },
-  { name: "Psychiatry", desc: "Medication management and psychotherapy add-on coding done right." },
-  { name: "Psychology", desc: "Testing, evaluation and session billing with payer-specific rules." },
-  { name: "Dental", desc: "Medical-dental cross coding and benefit verification for accurate claims." },
-  { name: "Orthopedic", desc: "Surgical, imaging and DME billing with modifier precision." },
-  { name: "Cardiology", desc: "Diagnostic and interventional coding with bundling compliance." },
-  { name: "Neurology", desc: "EEG, EMG and complex procedure coding handled by specialists." },
-  { name: "Pediatrics", desc: "Well-child, vaccine and developmental screening reimbursement optimization." },
-  { name: "Dermatology", desc: "Pathology, biopsy and cosmetic vs. medical claim separation." },
-  { name: "OB/GYN", desc: "Global maternity billing and gynecological procedure coding." },
-  { name: "Pain Management", desc: "Injection, procedure and authorization management to reduce delays." },
-  { name: "Physical Therapy", desc: "Time-unit billing, plan-of-care tracking and cap monitoring." },
-  { name: "Chiropractic", desc: "Medical necessity documentation and active-treatment coding." },
-  { name: "Radiology", desc: "Technical and professional component billing across modalities." },
-  { name: "Laboratory", desc: "High-volume panel coding with medical necessity edits." },
-  { name: "Home Health", desc: "OASIS-aligned billing and episodic payment management." },
-  { name: "Hospice", desc: "Level-of-care billing and benefit period compliance." },
-  { name: "ASC", desc: "Facility billing, implant tracking and surgical claim accuracy." },
-  { name: "Telehealth", desc: "Place-of-service and modifier compliance for virtual visits." },
-  { name: "Multi-Specialty Groups", desc: "Unified reporting and billing across every department and provider." },
+  { name: "Primary Care", slug: "primary-care", desc: "Streamlined billing and eligibility workflows for high-volume primary care visits." },
+  { name: "Family Medicine", slug: "family-medicine", desc: "Accurate coding for preventive, chronic and acute care across all ages." },
+  { name: "Internal Medicine", slug: "internal-medicine", desc: "Complex E/M coding and documentation support to capture full reimbursement." },
+  { name: "Urgent Care", slug: "urgent-care", desc: "Fast claims for walk-in volume with real-time eligibility verification." },
+  { name: "Behavioral Health", slug: "behavioral-health", desc: "Specialized billing for therapy, counseling and time-based session codes." },
+  { name: "Mental Health", slug: "mental-health", desc: "Authorization-heavy workflows handled end to end to prevent denials." },
+  { name: "Psychiatry", slug: "psychiatry", desc: "Medication management and psychotherapy add-on coding done right." },
+  { name: "Cardiology", slug: "cardiology", desc: "Diagnostic and interventional coding with bundling compliance." },
+  { name: "Orthopedics", slug: "orthopedics", desc: "Surgical, imaging and DME billing with modifier precision." },
+  { name: "Pediatrics", slug: "pediatrics", desc: "Well-child, vaccine and developmental screening reimbursement optimization." },
+  { name: "Dermatology", slug: "dermatology", desc: "Pathology, biopsy and cosmetic vs. medical claim separation." },
+  { name: "OB/GYN", slug: "obgyn", desc: "Global maternity billing and gynecological procedure coding." },
+  { name: "Pain Management", slug: "pain-management", desc: "Injection, procedure and authorization management to reduce delays." },
+  { name: "Physical Therapy", slug: "physical-therapy", desc: "Time-unit billing, plan-of-care tracking and cap monitoring." },
+  { name: "Chiropractic", slug: "chiropractic", desc: "Medical necessity documentation and active-treatment coding." },
+  { name: "Radiology", slug: "radiology", desc: "Technical and professional component billing across modalities." },
+  { name: "Gastroenterology", slug: "gastroenterology", desc: "Endoscopy, screening vs. diagnostic and modifier coding done right." },
+  { name: "Nephrology", slug: "nephrology", desc: "Dialysis MCP billing and chronic care coding for renal practices." },
+  { name: "Telehealth", slug: "telehealth", desc: "Place-of-service and modifier compliance for virtual visits." },
+  { name: "Multi-Specialty Groups", slug: "multi-specialty", desc: "Unified reporting and billing across every department and provider." },
 ];
 
 export function Industries() {
@@ -100,6 +97,15 @@ export function Industries() {
               </span>
               <h3 className="mt-3 text-xl font-semibold text-navy">{active.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{active.desc}</p>
+              {active.slug && (
+                <Link
+                  to="/industries/$slug"
+                  params={{ slug: active.slug }}
+                  className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand transition-all hover:gap-2"
+                >
+                  View full details <ArrowRight className="h-4 w-4" />
+                </Link>
+              )}
             </motion.div>
           </motion.div>
         )}

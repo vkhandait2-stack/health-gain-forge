@@ -58,7 +58,7 @@ export function HeroDashboard() {
             </span>
             <div>
               <p className="text-sm font-semibold text-navy">Revenue Command Center</p>
-              <p className="text-[11px] text-muted-foreground">Live · Updated just now</p>
+              <p className="text-[11px] text-muted-foreground">Illustrative performance snapshot</p>
             </div>
           </div>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-2.5 py-1 text-[11px] font-semibold text-success">
