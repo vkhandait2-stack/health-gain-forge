@@ -129,8 +129,8 @@ export function LeadForm({ compact = false, id }: { compact?: boolean; id?: stri
     >
       {/* Honeypot (hidden from users, catches bots) */}
       <div className="absolute left-[-9999px]" aria-hidden="true">
-        <label htmlFor="company_website">Company website</label>
-        <input id="company_website" tabIndex={-1} autoComplete="off" {...register("company_website")} />
+        <label htmlFor="botcheck">Do not fill this field</label>
+        <input id="botcheck" tabIndex={-1} autoComplete="off" {...register("botcheck")} />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
