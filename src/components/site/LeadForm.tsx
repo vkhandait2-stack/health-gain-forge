@@ -106,9 +106,9 @@ export function LeadForm({ compact = false, id }: { compact?: boolean; id?: stri
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success/15 text-success">
           <CheckCircle2 className="h-7 w-7" />
         </span>
-        <h3 className="mt-5 text-xl font-bold text-navy">Thank you — we've got your details</h3>
+        <h3 className="mt-5 text-xl font-bold text-navy">Thank you! We'll reach out within 24 hours.</h3>
         <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-          A Nex Records revenue cycle specialist will reach out within one business day to schedule your free RCM
+          A Nex Records revenue cycle specialist has received your details and will contact you to schedule your free RCM
           assessment.
         </p>
         <Button variant="outline" className="mt-6" onClick={() => setSubmitted(false)}>
