@@ -3,9 +3,10 @@ export const SITE_URL = "https://nex-records.com";
 export const CALENDLY_URL = "https://calendly.com/vaishk1212/new-meeting";
 export const LINKEDIN_URL = "https://www.linkedin.com/company/nexrecords/";
 
-// Paste the deployed Google Apps Script Web App URL (ends in /exec) here.
-// Until it is set, the lead form falls back to opening an email to CONTACT_EMAIL.
-export const GOOGLE_SHEETS_WEBHOOK_URL = "";
+// Web3Forms — every lead submission is emailed via https://api.web3forms.com/submit.
+// This is a publishable access key (safe in client code).
+export const WEB3FORMS_ACCESS_KEY = "b3eb2c5f-9ab0-4596-9aed-d2fef2d3698c";
+export const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
 // The single contact email used everywhere on the site.
 export const EMAIL_PRIMARY = "Vaishnav@Nex-Records.com";
