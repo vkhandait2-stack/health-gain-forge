@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { GOOGLE_SHEETS_WEBHOOK_URL, CONTACT_EMAIL } from "@/lib/site";
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT, CONTACT_EMAIL } from "@/lib/site";
 
 const SPECIALTIES = ["Primary Care", "Cardiology", "Behavioral Health", "Dental", "Urgent Care", "Other"] as const;
 const PROVIDER_RANGES = ["1", "2–5", "6–10", "11–25", "26–50", "50+"] as const;
@@ -30,7 +30,7 @@ const schema = z.object({
   software: z.string().trim().max(80).optional().or(z.literal("")),
   message: z.string().trim().max(1000).optional().or(z.literal("")),
   // Honeypot — must stay empty.
-  company_website: z.string().max(0).optional().or(z.literal("")),
+  botcheck: z.string().max(0).optional().or(z.literal("")),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -52,42 +52,51 @@ export function LeadForm({ compact = false, id }: { compact?: boolean; id?: stri
 
   async function onSubmit(values: FormValues) {
     setSubmitError(null);
-    if (values.company_website) return; // bot caught by honeypot
+    if (values.botcheck) return; // bot caught by honeypot
 
     const payload = {
-      fullName: values.fullName,
-      practice: values.practice,
-      email: values.email,
-      phone: values.phone,
-      specialty: values.specialty,
-      providers: values.providers,
-      claims: values.claims ?? "",
-      software: values.software ?? "",
-      message: values.message ?? "",
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: "New Lead — Nex Records",
+      from_name: "Nex Records Website",
+      botcheck: "",
+      "Full Name": values.fullName,
+      "Practice/Organization": values.practice,
+      "Work Email": values.email,
+      Phone: values.phone,
+      Specialty: values.specialty,
+      "No. of Providers": values.providers,
+      "Avg Monthly Claims": values.claims ?? "",
+      "Current Billing/EHR Software": values.software ?? "",
+      Message: values.message ?? "",
     };
 
     try {
-      if (GOOGLE_SHEETS_WEBHOOK_URL) {
-        await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload),
-        });
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data?.success) {
         setSubmitted(true);
         reset();
       } else {
-        // Fallback until the Google Sheet endpoint is configured — never lose a lead.
-        const body = Object.entries(payload)
-          .map(([k, v]) => `${k}: ${v}`)
-          .join("%0D%0A");
-        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-          "New RCM inquiry — " + values.practice,
-        )}&body=${body}`;
-        setSubmitted(true);
-        reset();
+        setSubmitError(
+          "Something went wrong sending your request. Please try again, or email us directly at " +
+            CONTACT_EMAIL +
+            ".",
+        );
       }
     } catch {
-      setSubmitError("Something went wrong. Please email us directly at " + CONTACT_EMAIL + ".");
+      setSubmitError(
+        "We couldn't reach our server. Please check your connection and try again, or email us at " +
+          CONTACT_EMAIL +
+          ".",
+      );
     }
   }
 
@@ -97,9 +106,9 @@ export function LeadForm({ compact = false, id }: { compact?: boolean; id?: stri
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success/15 text-success">
           <CheckCircle2 className="h-7 w-7" />
         </span>
-        <h3 className="mt-5 text-xl font-bold text-navy">Thank you — we've got your details</h3>
+        <h3 className="mt-5 text-xl font-bold text-navy">Thank you! We'll reach out within 24 hours.</h3>
         <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-          A Nex Records revenue cycle specialist will reach out within one business day to schedule your free RCM
+          A Nex Records revenue cycle specialist has received your details and will contact you to schedule your free RCM
           assessment.
         </p>
         <Button variant="outline" className="mt-6" onClick={() => setSubmitted(false)}>
@@ -120,8 +129,8 @@ export function LeadForm({ compact = false, id }: { compact?: boolean; id?: stri
     >
       {/* Honeypot (hidden from users, catches bots) */}
       <div className="absolute left-[-9999px]" aria-hidden="true">
-        <label htmlFor="company_website">Company website</label>
-        <input id="company_website" tabIndex={-1} autoComplete="off" {...register("company_website")} />
+        <label htmlFor="botcheck">Do not fill this field</label>
+        <input id="botcheck" tabIndex={-1} autoComplete="off" {...register("botcheck")} />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
