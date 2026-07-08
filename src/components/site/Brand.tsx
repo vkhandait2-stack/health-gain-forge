@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/nex-records-logo.png.asset.json";
 
 export function Brand({ dark = false }: { dark?: boolean }) {
   if (!dark) {
