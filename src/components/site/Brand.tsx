@@ -4,7 +4,7 @@ export function Brand({ dark = false }: { dark?: boolean }) {
   if (!dark) {
     return (
       <Link to="/" className="inline-flex items-center" aria-label="Nex Records home">
-        <img src={logo.url} alt="Nex Records — Healthcare Revenue Cycle Management" className="h-9 w-auto sm:h-10" width={304} height={72} />
+        <img src="/logo.png" alt="Nex Records" className="h-9 w-auto sm:h-10" width={304} height={72} />
       </Link>
     );
   }
